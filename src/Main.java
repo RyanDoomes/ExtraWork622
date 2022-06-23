@@ -43,9 +43,17 @@ public class Main {
         //Print Avg to Console
         System.out.println("Average: " +getAverage(arr));
 
+        //Print the Amount of numbers greater than Avg
+        System.out.println("Number of integers greater than average: "+ greaterThanAverage(arr));
 
+        //Print subsequent values increase amount
+        System.out.println("Number of times subsequent value increases: " + countInc(arr));
 
+        //Amount of times number gets smaller
+        System.out.println("Number of times subsequent value decreases: " + countDec(arr));
 
+        //Print array 3 per line
+        printArray3PerLn(arr);
 
 
 
@@ -106,18 +114,50 @@ public class Main {
 
     //Greater than Average
 
-    public static int greaterThanAverage(int[] x) {
-        int count;
-
-        for (int i=0; i < x.length; i++) {
-
+    public static double greaterThanAverage(int[] a){
+        int count = 0;
+        int avg = getAverage(a);
+        for(int i = 0; i < a.length; i++){
+            if(a[i] > avg){
+                count++;
+            }
         }
-
+        return count;
     }
 
+    // find how many nums that next value is bigger
+    public static int countInc(int[] a){
+        int count = 0;
+        for(int i = 0; i < a.length-1; i++){
+            if(a[i+1] > a[i]){
+                count++;
+            }
+        }
+        return count;
+    }
 
-
-
+    // count how many when next num is smaller
+    public static int countDec(int[] a){
+        int count = 0;
+        for(int i = 0; i < a.length-1; i++){
+            if(a[i] > a[i+1]){
+                count++;
+            }
+        }
+        return count;
+    }
+        //print array 3 elements per line
+    public static void printArray3PerLn(int[] a){
+        int lineCount = 0;
+        for(int i = 0; i < a.length; i++){
+            System.out.print(a[i] + " ");
+            lineCount++;
+            if (lineCount == 3) {
+                System.out.println();
+                lineCount = 0;
+            }
+        }
+    }
 
 
 }
